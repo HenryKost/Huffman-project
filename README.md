@@ -48,7 +48,7 @@ To compile the program, use the following command:
 
 ```bash
 gcc -o huffman huffman.c
-
+```
 This will create an executable named huffman.
 
 Dependencies
