@@ -1,0 +1,1 @@
+char** makeHuffmanCode(Node* tree);

@@ -3,19 +3,13 @@
 #include "allHeaders"
 
 int main(){
-	FILE *flie = fopen("filename.txt","r+");
-	if( file == NULL){
-		perror("error opening file");
-		return -1;
-	
-	}
-	
-	int count[NUM_OF_ASCII]={0};
-	countFrequanncy(file,count);
-	fclose(file);
-	
-	ListNode PQ=makeNodesFromCount(count);
-		
+
+	int count[NUM_OF_ASCII]= {0};
+	count[97]=5;
+	count[98]=3;
+	count[99]=1;
+	ListNode* PQ=makeNodesFromCount(count);
+	Node* tree=recHuffman(PQ);
 		
 		
 }

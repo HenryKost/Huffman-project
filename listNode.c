@@ -1,20 +1,19 @@
 #include<stdio.h>
 #include "allHeaders.h"
 
-ListNode* addNodeToList(ListNode* head, Node* add){
-	ListNode* newList = (ListNode *)malloc(sizeof(ListNode));
-	
+ListNode* addNodeToList(ListNode* head, Node* add) {
+	ListNode* newList = (ListNode*)malloc(sizeof(ListNode));
 	newList->thisNode = add;
-	newList->next =head;
-	head=newList;
+	newList->next = head;
+	head = newList;
 	return head;
 
 }
 
 
 
-Node* makeNode(char character, int freq){
-	Node* newNode = (Node *)malloc(sizeof(Node));
+Node* makeNode(char character, int freq) {
+	Node* newNode = (Node*)malloc(sizeof(Node));
 	newNode->character = character;
 	newNode->freq = freq;
 	newNode->left = NULL;
@@ -23,25 +22,36 @@ Node* makeNode(char character, int freq){
 }
 
 
-Node* extractMinNode(ListNode* head){
-	ListNode* temp=head;
-	int minFreq=head->thisNode->freq;
-	Node* minNode= head->thisNode;
-	while(*temp!=rem){
-		if(minfreq>temp->thisNode->freq){
-			int minFreq=temp->thisNode->freq;
-			Node* minNode= temp->thisNode;
+Node* extractMinNode(ListNode** headptr) {
+	if (headptr == NULL) {
+		return NULL;
+	}
+	ListNode* head = *headptr;
+	if (head->next == NULL) {
+		*(headptr) = NULL;
+		return head->thisNode;
+	}
+	int min = head->thisNode->freq;
+	Node* minNode = head->thisNode;
+	ListNode* temp = head->next;
+	while (temp != NULL) {
+		if (temp->thisNode->freq < min) {
+			min = temp->thisNode->freq;
+			minNode = temp->thisNode;
 		}
-		temp=temp->next;
+		temp = temp->next;
 	}
-	temp=head;
-	while(temp->next->thisNode !=minNode){
-		temp=temp->next;
+
+	temp = head;
+	if (head->thisNode == minNode) {
+		*(headptr) = head->next;
+		return temp->thisNode;
+	}
 	
+	while (temp->next->thisNode != minNode) {
+		temp = temp->next;
 	}
-	ListNode* removingNode = temp->next;
-	temp->next=temp->next->next;
-	removingNode->next=NULL;
+	temp->next = temp->next->next;
 	return minNode;
-	
+
 }
