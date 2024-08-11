@@ -51,13 +51,13 @@ gcc -o huffman huffman.c
 ```
 This will create an executable named huffman.
 
-Dependencies
+###Dependencies
 This program requires a C compiler like gcc.
 
-License
+###License
 This project is open-source and available under the MIT License.
 
-Contributing
+###Contributing
 Contributions are welcome! Please submit a pull request or open an issue for any bugs or feature requests.
 
 Acknowledgments
